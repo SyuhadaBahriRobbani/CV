@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>CV Profesional Full Stack Developer • Nama Kamu</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0a192f;
+            --primary-light: #112240;
+            --secondary: #64ffda;
+            --accent: #64ffda;
+            --text-primary: #ccd6f6;
+            --text-secondary: #8892b0;
+            --text-light: #a8b2d1;
+            --white: #e6f1ff;
+            --bg-card: #ffffff;
+            --bg-section: #f8fafc;
+            --border: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --radius: 1rem;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #0a192f 0%, #112240 50%, #1a365d 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 2rem 1.5rem;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        /* Container Utama */
+        .cv-container {
+            max-width: 1100px;
+            width: 100%;
+            background: var(--bg-card);
+            border-radius: 1.5rem;
+            box-shadow: var(--shadow-xl), 0 0 0 1px rgba(255,255,255,0.05);
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        /* ============ SIDEBAR KIRI (DARK THEME) ============ */
+        .sidebar {
+            background: var(--primary);
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(100, 255, 218, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(100, 255, 218, 0.02) 0%, transparent 50%);
+            color: var(--text-primary);
+            flex: 1 1 340px;
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            border-right: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        /* Status indicator */
+        .status-indicator {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--secondary);
+            background: rgba(100, 255, 218, 0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--secondary);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 8px rgba(100, 255, 218, 0.6);
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Foto Profil */
+        .photo-wrapper {
+            position: relative;
+            margin-bottom: 1.8rem;
+            margin-top: 1rem;
+        }
+
+        .photo-container {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 4px solid var(--secondary);
+            box-shadow: 0 0 30px rgba(100, 255, 218, 0.2), 0 15px 25px rgba(0,0,0,0.4);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            background: #1e3a5f;
+            transition: var(--transition);
+        }
+
+        .photo-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 40px rgba(100, 255, 218, 0.35), 0 20px 30px rgba(0,0,0,0.5);
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .photo-fallback {
+            display: none;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1e3a5f, #0a192f);
+            justify-content: center;
+            align-items: center;
+            font-size: 5rem;
+            color: var(--secondary);
+        }
+
+        /* Nama & Title */
+        .sidebar-name {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--white);
+            text-align: center;
+            margin-bottom: 0.3rem;
+        }
+
+        .sidebar-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--secondary);
+            background: rgba(100, 255, 218, 0.08);
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 2rem;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+        }
+
+        /* Tech Stack Tags */
+        .tech-stack-mini {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 1.8rem;
+        }
+
+        .tech-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 500;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            background: rgba(100, 255, 218, 0.08);
+            color: var(--secondary);
+            border: 1px solid rgba(100, 255, 218, 0.25);
+            letter-spacing: 0.3px;
+        }
+
+        /* Kontak */
+        .contact-section {
+            width: 100%;
+            margin-bottom: 1.8rem;
+        }
+
+        .sidebar-heading {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(100, 255, 218, 0.2);
+            width: 100%;
+        }
+
+        .contact-list {
+            list-style: none;
+            width: 100%;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            margin-bottom: 0.9rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            word-break: break-word;
+            transition: var(--transition);
+            padding: 0.4rem 0.5rem;
+            border-radius: 6px;
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.03);
+            color: var(--white);
+        }
+
+        .contact-item i {
+            width: 1.2rem;
+            font-size: 1rem;
+            color: var(--secondary);
+            margin-top: 0.15rem;
+            text-align: center;
+        }
+
+        .contact-item a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-item a:hover {
+            color: var(--secondary);
+        }
+
+        /* Skills Bars */
+        .skills-section {
+            width: 100%;
+            margin-bottom: 1.8rem;
+        }
+
+        .skill-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .skill-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 0.4rem;
+            color: var(--text-light);
+        }
+
+        .skill-bar {
+            height: 6px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary), #48c9b0);
+            border-radius: 10px;
+            width: 0%;
+            transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 8px rgba(100, 255, 218, 0.3);
+        }
+
+        /* Languages & Interests */
+        .extra-list {
+            list-style: none;
+            width: 100%;
+        }
+
+        .extra-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 0.6rem;
+            padding: 0.3rem 0;
+        }
+
+        .extra-item i {
+            color: var(--secondary);
+            font-size: 0.8rem;
+            width: 1rem;
+            text-align: center;
+        }
+
+        /* ============ MAIN CONTENT (WHITE THEME) ============ */
+        .main-content {
+            flex: 1 1 600px;
+            padding: 2.5rem 2.5rem 2rem;
+            background: var(--bg-card);
+            position: relative;
+        }
+
+        /* Tab Navigasi */
+        .tab-nav {
+            display: flex;
+            gap: 0.3rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--border);
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.6rem 1.2rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #64748b;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: var(--transition);
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            color: #0f172a;
+            background: #f1f5f9;
+        }
+
+        .tab-btn.active {
+            color: #0a192f;
+            border-bottom-color: #0a192f;
+        }
+
+        /* Tab Content */
+        .tab-pane {
+            display: none;
+            animation: fadeSlideIn 0.4s ease;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styling */
+        .content-section {
+            margin-bottom: 2rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 2px solid #f1f5f9;
+        }
+
+        .section-icon {
+            width: 36px;
+            height: 36px;
+            background: #0a192f;
+            color: var(--secondary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .section-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #0f172a;
+            letter-spacing: -0.3px;
+        }
+
+        /* Timeline Items */
+        .timeline {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e2e8f0;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.8rem;
+            padding-left: 1.2rem;
+            padding-bottom: 0.5rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -1.65rem;
+            top: 0.4rem;
+            width: 12px;
+            height: 12px;
+            background: #0a192f;
+            border: 3px solid var(--secondary);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-role {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: #0f172a;
+            margin-bottom: 0.15rem;
+        }
+
+        .timeline-company {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #1e5a7e;
+            margin-bottom: 0.2rem;
+        }
+
+        .timeline-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .timeline-desc {
+            font-size: 0.9rem;
+            color: #475569;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .achievement-list li {
+            font-size: 0.85rem;
+            color: #475569;
+            padding-left: 1rem;
+            position: relative;
+            margin-bottom: 0.3rem;
+        }
+
+        .achievement-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        /* Tech Badge */
+        .tech-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.5rem;
+        }
+
+        .badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.6rem;
+            background: #f1f5f9;
+            color: #334155;
+            border-radius: 4px;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+
+        .portfolio-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 1rem;
+            transition: var(--transition);
+            background: #fafbfc;
+        }
+
+        .portfolio-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: #cbd5e1;
+            transform: translateY(-2px);
+        }
+
+        .portfolio-card h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.3rem;
+        }
+
+        .portfolio-card p {
+            font-size: 0.8rem;
+            color: #64748b;
+            line-height: 1.5;
+        }
+
+        .portfolio-link {
+            font-size: 0.8rem;
+            color: #1e5a7e;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            margin-top: 0.4rem;
+        }
+
+        .portfolio-link:hover {
+            color: #0a192f;
+        }
+
+        /* Certificate & Course */
+        .cert-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .cert-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .cert-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #0f172a;
+        }
+
+        .cert-issuer {
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        /* Print Button */
+        .action-bar {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .btn {
+            padding: 0.6rem 1.4rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            border: none;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid #0a192f;
+            color: #0a192f;
+        }
+
+        .btn-outline:hover {
+            background: #0a192f;
+            color: var(--secondary);
+            border-color: #0a192f;
+        }
+
+        .btn-primary {
+            background: #0a192f;
+            color: white;
+            border: 1.5px solid #0a192f;
+        }
+
+        .btn-primary:hover {
+            background: #112240;
+            box-shadow: var(--shadow-md);
+        }
+
+        /* QR Code placeholder */
+        .qr-placeholder {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 0.5rem;
+            }
+            .sidebar, .main-content {
+                flex: 1 1 100%;
+            }
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid rgba(100, 255, 218, 0.15);
+            }
+            .tab-btn {
+                font-size: 0.78rem;
+                padding: 0.5rem 0.8rem;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .cv-container {
+                box-shadow: none;
+                border-radius: 0;
+                max-width: 100%;
+            }
+            .sidebar {
+                background: #0a192f !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .action-bar, .tab-nav, .status-indicator {
+                display: none !important;
+            }
+            .tab-pane {
+                display: block !important;
+                page-break-inside: avoid;
+            }
+            .main-content {
+                padding: 1.5rem;
+            }
+            @page {
+                margin: 0.5cm;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <!-- ==================== SIDEBAR ==================== -->
+        <aside class="sidebar">
+            <div class="status-indicator">
+                <span class="status-dot"></span> Open to work
+            </div>
+
+            <!-- Foto Profil -->
+            <div class="photo-wrapper">
+                <div class="photo-container">
+                    <img src="foto-cv.jpg" alt="Foto Profil" id="profileImage" 
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="photo-fallback" id="photoFallback">
+                        <i class="fas fa-user-astronaut"></i>
+                    </div>
+                </div>
+            </div>
+
+            <h1 class="sidebar-name">Alex Mahardika</h1>
+            <span class="sidebar-title">Senior Full Stack Developer</span>
+
+            <!-- Tech Stack Mini -->
+            <div class="tech-stack-mini">
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">AWS</span>
+                <span class="tech-tag">PostgreSQL</span>
+                <span class="tech-tag">Docker</span>
+            </div>
+
+            <!-- Kontak -->
+            <div class="contact-section">
+                <h3 class="sidebar-heading">Kontak</h3>
+                <ul class="contact-list">
+                    <li class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:alex.mahardika@email.com">alex.mahardika@email.com</a>
+                    </li>
+                    <li class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+6281234567890">+62 812-3456-7890</a>
+                    </li>
+                    <li class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Jakarta Selatan, Indonesia
+                    </li>
+                    <li class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <a href="https://linkedin.com/in/alexmahardika" target="_blank">linkedin.com/in/alexmahardika</a>
+                    </li>
+                    <li class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <a href="https://github.com/alexmahardika" target="_blank">github.com/alexmahardika</a>
+                    </li>
+                    <li class="contact-item">
+                        <i class="fas fa-globe"></i>
+                        <a href="https://alexmahardika.dev" target="_blank">alexmahardika.dev</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Skills -->
+            <div class="skills-section">
+                <h3 class="sidebar-heading">Keahlian Utama</h3>
+                <div class="skill-group">
+                    <div class="skill-label"><span>React / Next.js</span><span>95%</span></div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-label"><span>Node.js / Express</span><span>92%</span></div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="92"></div></div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-label"><span>TypeScript</span><span>90%</span></div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-label"><span>PostgreSQL / MongoDB</span><span>88%</span></div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-label"><span>AWS / DevOps</span><span>85%</span></div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-label"><span>Docker / K8s</span><span>82%</span></div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="82"></div></div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-label"><span>System Design</span><span>88%</span></div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+                </div>
+            </div>
+
+            <!-- Bahasa -->
+            <div style="width: 100%; margin-bottom: 1.5rem;">
+                <h3 class="sidebar-heading">Bahasa</h3>
+                <ul class="extra-list">
+                    <li class="extra-item"><i class="fas fa-circle"></i> Bahasa Indonesia (Native)</li>
+                    <li class="extra-item"><i class="fas fa-circle"></i> English (Professional - C1)</li>
+                    <li class="extra-item"><i class="fas fa-circle"></i> Japanese (Basic - N5)</li>
+                </ul>
+            </div>
+
+            <!-- Minat -->
+            <div style="width: 100%;">
+                <h3 class="sidebar-heading">Minat</h3>
+                <ul class="extra-list">
+                    <li class="extra-item"><i class="fas fa-microchip"></i> Open Source Contribution</li>
+                    <li class="extra-item"><i class="fas fa-cloud"></i> Cloud Architecture</li>
+                    <li class="extra-item"><i class="fas fa-robot"></i> AI / Machine Learning</li>
+                    <li class="extra-item"><i class="fas fa-motorcycle"></i> Cycling</li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- ==================== MAIN CONTENT ==================== -->
+        <main class="main-content">
+            <!-- Tab Navigasi -->
+            <nav class="tab-nav" role="tablist">
+                <button class="tab-btn active" data-tab="experience" role="tab" aria-selected="true">
+                    <i class="fas fa-briefcase"></i> Pengalaman
+                </button>
+                <button class="tab-btn" data-tab="projects" role="tab" aria-selected="false">
+                    <i class="fas fa-code"></i> Portfolio
+                </button>
+                <button class="tab-btn" data-tab="education" role="tab" aria-selected="false">
+                    <i class="fas fa-graduation-cap"></i> Pendidikan
+                </button>
+                <button class="tab-btn" data-tab="certificates" role="tab" aria-selected="false">
+                    <i class="fas fa-certificate"></i> Sertifikasi
+                </button>
+            </nav>
+
+            <!-- Tab: Pengalaman -->
+            <div class="tab-pane active" id="experience" role="tabpanel">
+                <!-- Ringkasan -->
+                <div class="content-section">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-user"></i></div>
+                        <h2 class="section-title">Profil Profesional</h2>
+                    </div>
+                    <p style="color: #475569; font-size: 0.95rem; line-height: 1.7;">
+                        Full Stack Developer dengan 7+ tahun pengalaman membangun aplikasi web skala enterprise. 
+                        Spesialisasi di ekosistem JavaScript/TypeScript (React, Next.js, Node.js) dan cloud infrastructure (AWS). 
+                        Berpengalaman memimpin tim engineering 5-10 orang, menerapkan CI/CD pipeline, dan mengoptimalkan performa aplikasi hingga 40%. 
+                        Aktif berkontribusi di open source dan memiliki passion di bidang system design dan arsitektur microservices.
+                    </p>
+                </div>
+
+                <!-- Pengalaman Kerja -->
+                <div class="content-section">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-building"></i></div>
+                        <h2 class="section-title">Pengalaman Kerja</h2>
+                    </div>
+                    <div class="timeline">
+                        <!-- Job 1 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-role">Senior Full Stack Developer</div>
+                            <div class="timeline-company">PT Teknologi Nusantara • Jakarta</div>
+                            <div class="timeline-meta">
+                                <span><i class="far fa-calendar-alt"></i> Jan 2023 - Sekarang</span>
+                                <span><i class="fas fa-clock"></i> Full-time</span>
+                            </div>
+                            <p class="timeline-desc">
+                                Memimpin pengembangan platform SaaS B2B dengan 50.000+ pengguna aktif. Bertanggung jawab atas arsitektur sistem, code review, dan mentoring junior developer.
+                            </p>
+                            <ul class="achievement-list">
+                                <li>Mengarsiteki migrasi monolith ke microservices, meningkatkan skalabilitas 3x</li>
+                                <li>Mengimplementasi real-time analytics dashboard menggunakan WebSocket & Redis</li>
+                                <li>Mengurangi latency API rata-rata dari 800ms menjadi 120ms</li>
+                                <li>Memimpin tim 8 developer dengan metodologi Agile/Scrum</li>
+                            </ul>
+                            <div class="tech-badges">
+                                <span class="badge">Next.js</span><span class="badge">TypeScript</span>
+                                <span class="badge">Node.js</span><span class="badge">PostgreSQL</span>
+                                <span class="badge">AWS</span><span class="badge">Docker</span>
+                                <span class="badge">Redis</span>
+                            </div>
+                        </div>
+
+                        <!-- Job 2 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-role">Full Stack Developer</div>
+                            <div class="timeline-company">Startup Fintech • Jakarta</div>
+                            <div class="timeline-meta">
+                                <span><i class="far fa-calendar-alt"></i> Mar 2020 - Des 2022</span>
+                                <span><i class="fas fa-clock"></i> Full-time</span>
+                            </div>
+                            <p class="timeline-desc">
+                                Mengembangkan platform pembayaran digital dan integrasi dengan berbagai payment gateway. Fokus pada keamanan transaksi dan high availability system.
+                            </p>
+                            <ul class="achievement-list">
+                                <li>Membangun payment processing system dengan throughput 10.000 transaksi/detik</li>
+                                <li>Implementasi OWASP security standards, lolos audit keamanan dengan skor 98%</li>
+                                <li>Mengembangkan internal admin dashboard dengan React & GraphQL</li>
+                            </ul>
+                            <div class="tech-badges">
+                                <span class="badge">React</span><span class="badge">Node.js</span>
+                                <span class="badge">GraphQL</span><span class="badge">MongoDB</span>
+                                <span class="badge">Firebase</span>
+                            </div>
+                        </div>
+
+                        <!-- Job 3 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-role">Frontend Developer</div>
+                            <div class="timeline-company">Digital Agency • Bandung</div>
+                            <div class="timeline-meta">
+                                <span><i class="far fa-calendar-alt"></i> Jun 2018 - Feb 2020</span>
+                                <span><i class="fas fa-clock"></i> Full-time</span>
+                            </div>
+                            <p class="timeline-desc">
+                                Mengembangkan website dan web application untuk berbagai klien korporat. Spesialisasi di React ecosystem dan responsive design.
+                            </p>
+                            <ul class="achievement-list">
+                                <li>Mengerjakan 15+ proyek klien dengan tingkat kepuasan 100%</li>
+                                <li>Membangun reusable component library yang digunakan di seluruh tim</li>
+                            </ul>
+                            <div class="tech-badges">
+                                <span class="badge">React</span><span class="badge">Redux</span>
+                                <span class="badge">SASS</span><span class="badge">REST API</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Portfolio -->
+            <div class="tab-pane" id="projects" role="tabpanel">
+                <div class="content-section">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-laptop-code"></i></div>
+                        <h2 class="section-title">Project Portfolio</h2>
+                    </div>
+                    <div class="portfolio-grid">
+                        <div class="portfolio-card">
+                            <h4>🛒 E-Commerce Microservices</h4>
+                            <p>Platform e-commerce dengan arsitektur microservices, mencakup catalog, cart, payment, dan notification service.</p>
+                            <div class="tech-badges" style="margin-top: 0.5rem;">
+                                <span class="badge">Next.js</span><span class="badge">NestJS</span><span class="badge">Kafka</span>
+                            </div>
+                            <a href="#" class="portfolio-link"><i class="fab fa-github"></i> Repository</a>
+                        </div>
+                        <div class="portfolio-card">
+                            <h4>📊 Real-time Dashboard</h4>
+                            <p>Analytics dashboard dengan real-time data streaming, visualisasi interaktif, dan export laporan.</p>
+                            <div class="tech-badges" style="margin-top: 0.5rem;">
+                                <span class="badge">React</span><span class="badge">WebSocket</span><span class="badge">D3.js</span>
+                            </div>
+                            <a href="#" class="portfolio-link"><i class="fab fa-github"></i> Repository</a>
+                        </div>
+                        <div class="portfolio-card">
+                            <h4>🔐 Auth Service Boilerplate</h4>
+                            <p>Open source authentication service dengan JWT, OAuth2, 2FA, dan role-based access control.</p>
+                            <div class="tech-badges" style="margin-top: 0.5rem;">
+                                <span class="badge">Node.js</span><span class="badge">Passport</span><span class="badge">Redis</span>
+                            </div>
+                            <a href="#" class="portfolio-link"><i class="fab fa-github"></i> Repository</a>
+                        </div>
+                        <div class="portfolio-card">
+                            <h4>🚀 CLI Deployment Tool</h4>
+                            <p>Command-line tool untuk automasi deployment ke AWS ECS dan Vercel dengan konfigurasi YAML.</p>
+                            <div class="tech-badges" style="margin-top: 0.5rem;">
+                                <span class="badge">Node.js</span><span class="badge">AWS SDK</span><span class="badge">Commander</span>
+                            </div>
+                            <a href="#" class="portfolio-link"><i class="fab fa-github"></i> Repository</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Pendidikan -->
+            <div class="tab-pane" id="education" role="tabpanel">
+                <div class="content-section">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-university"></i></div>
+                        <h2 class="section-title">Pendidikan Formal</h2>
+                    </div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-role">S1 Teknik Informatika</div>
+                            <div class="timeline-company">Institut Teknologi Bandung (ITB)</div>
+                            <div class="timeline-meta">
+                                <span><i class="far fa-calendar-alt"></i> 2014 - 2018</span>
+                                <span><i class="fas fa-star"></i> GPA: 3.72 / 4.00</span>
+                            </div>
+                            <p class="timeline-desc">
+                                Fokus pada Software Engineering dan Distributed Systems. Skripsi: "Optimasi Performa Microservices dengan Event-Driven Architecture".
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-trophy"></i></div>
+                        <h2 class="section-title">Penghargaan & Prestasi</h2>
+                    </div>
+                    <ul class="achievement-list" style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.6rem;">🏆 Juara 1 Hackathon Nasional "Build for Indonesia" 2023</li>
+                        <li style="margin-bottom: 0.6rem;">🥇 Best Innovation Award - Tech Conference Asia 2022</li>
+                        <li style="margin-bottom: 0.6rem;">📝 Speaker di 5+ konferensi teknologi nasional</li>
+                        <li style="margin-bottom: 0.6rem;">⭐ Top Contributor Open Source Indonesia 2023</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Tab: Sertifikasi -->
+            <div class="tab-pane" id="certificates" role="tabpanel">
+                <div class="content-section">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-certificate"></i></div>
+                        <h2 class="section-title">Sertifikasi Profesional</h2>
+                    </div>
+                    <div class="cert-list">
+                        <div class="cert-item">
+                            <div>
+                                <div class="cert-name">AWS Solutions Architect Professional</div>
+                                <div class="cert-issuer">Amazon Web Services • 2024</div>
+                            </div>
+                            <span class="badge">Active</span>
+                        </div>
+                        <div class="cert-item">
+                            <div>
+                                <div class="cert-name">Google Professional Cloud Developer</div>
+                                <div class="cert-issuer">Google Cloud • 2023</div>
+                            </div>
+                            <span class="badge">Active</span>
+                        </div>
+                        <div class="cert-item">
+                            <div>
+                                <div class="cert-name">Meta Front-End Developer Certificate</div>
+                                <div class="cert-issuer">Meta (Coursera) • 2023</div>
+                            </div>
+                            <span class="badge">Active</span>
+                        </div>
+                        <div class="cert-item">
+                            <div>
+                                <div class="cert-name">Kubernetes Application Developer (CKAD)</div>
+                                <div class="cert-issuer">CNCF • 2022</div>
+                            </div>
+                            <span class="badge">Active</span>
+                        </div>
+                        <div class="cert-item">
+                            <div>
+                                <div class="cert-name">MongoDB Associate Developer</div>
+                                <div class="cert-issuer">MongoDB University • 2022</div>
+                            </div>
+                            <span class="badge">Active</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-book-open"></i></div>
+                        <h2 class="section-title">Kursus & Pelatihan</h2>
+                    </div>
+                    <div class="cert-list">
+                        <div class="cert-item">
+                            <div>
+                                <div class="cert-name">System Design for Senior Engineers</div>
+                                <div class="cert-issuer">ByteByteGo • 2024</div>
+                            </div>
+                        </div>
+                        <div class="cert-item">
+                            <div>
+                                <div class="cert-name">Advanced TypeScript Patterns</div>
+                                <div class="cert-issuer">Frontend Masters • 2023</div>
+                            </div>
+                        </div>
+                        <div class="cert-item">
+                            <div>
+                                <div class="cert-name">gRPC & Microservices Communication</div>
+                                <div class="cert-issuer">Udemy • 2023</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-bar">
+                <button class="btn btn-outline" onclick="window.print()">
+                    <i class="fas fa-print"></i> Cetak CV
+                </button>
+                <button class="btn btn-primary" id="downloadPDF">
+                    <i class="fas fa-download"></i> Download PDF
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        (function() {
+            // ============ TAB NAVIGATION ============
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+
+            function switchTab(targetId) {
+                // Deactivate all
+                tabButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.setAttribute('aria-selected', 'false');
+                });
+                tabPanes.forEach(pane => pane.classList.remove('active'));
+
+                // Activate target
+                const activeBtn = document.querySelector(`[data-tab="${targetId}"]`);
+                const activePane = document.getElementById(targetId);
+                
+                if (activeBtn) {
+                    activeBtn.classList.add('active');
+                    activeBtn.setAttribute('aria-selected', 'true');
+                }
+                if (activePane) {
+                    activePane.classList.add('active');
+                }
+            }
+
+            tabButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    switchTab(tabId);
+                    
+                    // Update URL hash (optional)
+                    history.pushState(null, null, `#${tabId}`);
+                });
+            });
+
+            // Handle initial hash
+            function handleHash() {
+                const hash = window.location.hash.substring(1);
+                if (hash && document.getElementById(hash)) {
+                    switchTab(hash);
+                }
+            }
+            handleHash();
+            window.addEventListener('hashchange', handleHash);
+
+            // ============ SKILL BARS ANIMATION ============
+            function animateSkillBars() {
+                const skillFills = document.querySelectorAll('.skill-fill');
+                skillFills.forEach((fill, index) => {
+                    const targetWidth = fill.getAttribute('data-width');
+                    if (targetWidth) {
+                        // Reset
+                        fill.style.width = '0%';
+                        // Animate with stagger
+                        setTimeout(() => {
+                            fill.style.width = targetWidth + '%';
+                        }, 100 + (index * 80));
+                    }
+                });
+            }
+
+            // Animate on load and on tab switch (re-trigger)
+            animateSkillBars();
+            
+            // Re-animate when switching tabs (in case skill bars are in different tabs)
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach(mutation => {
+                    if (mutation.target.classList.contains('active')) {
+                        animateSkillBars();
+                    }
+                });
+            });
+            
+            tabPanes.forEach(pane => {
+                observer.observe(pane, { attributes: true, attributeFilter: ['class'] });
+            });
+
+            // ============ DOWNLOAD PDF (Print to PDF) ============
+            document.getElementById('downloadPDF').addEventListener('click', function() {
+                alert('💡 Klik "Cetak CV" lalu pilih "Save as PDF" di dialog print untuk menyimpan sebagai PDF.\n\nAtau gunakan Ctrl+P / Cmd+P.');
+                window.print();
+            });
+
+            // ============ PROFILE IMAGE ERROR HANDLING ============
+            // Already handled via inline onerror, but we add a console log
+            const profileImg = document.getElementById('profileImage');
+            if (profileImg) {
+                profileImg.addEventListener('error', function() {
+                    console.log('⚠️ Gambar "foto-cv.jpg" tidak ditemukan. Menampilkan fallback icon.');
+                });
+                
+                // Check if image loaded successfully
+                if (profileImg.complete && profileImg.naturalHeight === 0) {
+                    profileImg.style.display = 'none';
+                    document.getElementById('photoFallback').style.display = 'flex';
+                }
+            }
+
+            console.log('✅ CV Full Stack Developer siap digunakan!');
+            console.log('📝 Ganti data placeholder dengan informasi Anda.');
+            console.log('🖼️ Pastikan file "foto-cv.jpg" ada di folder yang sama dengan file HTML ini.');
+            console.log('📑 Gunakan tab navigasi untuk melihat semua section.');
+        })();
+    </script>
+</body>
+</html>
