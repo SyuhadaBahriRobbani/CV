@@ -570,7 +570,185 @@
             color: #0a192f;
         }
 
-        /* Certificate & Course */
+        /* ============ SERTIFIKAT GRID DENGAN GAMBAR ============ */
+        .certificate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .certificate-card {
+            border: 1.5px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .certificate-card:hover {
+            box-shadow: var(--shadow-lg);
+            border-color: #94a3b8;
+            transform: translateY(-3px);
+        }
+
+        .certificate-card.highlight {
+            border-color: #64ffda;
+            box-shadow: 0 0 20px rgba(100, 255, 218, 0.15);
+        }
+
+        .certificate-image-wrapper {
+            width: 100%;
+            height: 160px;
+            background: #f1f5f9;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .certificate-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 0.8rem;
+            transition: var(--transition);
+        }
+
+        .certificate-card:hover .certificate-image-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .certificate-fallback {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 2.5rem;
+            gap: 0.5rem;
+        }
+
+        .certificate-fallback span {
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: #64748b;
+        }
+
+        .certificate-info {
+            padding: 1rem;
+        }
+
+        .certificate-name {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #0f172a;
+            margin-bottom: 0.3rem;
+            line-height: 1.3;
+        }
+
+        .certificate-issuer {
+            font-size: 0.78rem;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .certificate-date {
+            font-size: 0.72rem;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .certificate-badge {
+            position: absolute;
+            top: 0.8rem;
+            right: 0.8rem;
+            background: #0a192f;
+            color: var(--secondary);
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+            z-index: 2;
+        }
+
+        /* Penghargaan List */
+        .award-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .award-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            padding: 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            background: #fafbfc;
+            transition: var(--transition);
+        }
+
+        .award-item:hover {
+            box-shadow: var(--shadow-md);
+            border-color: #cbd5e1;
+        }
+
+        .award-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #ffd700, #ffaa00);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .award-icon.silver {
+            background: linear-gradient(135deg, #c0c0c0, #a0a0a0);
+        }
+
+        .award-icon.bronze {
+            background: linear-gradient(135deg, #cd7f32, #a0522d);
+        }
+
+        .award-details h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.2rem;
+        }
+
+        .award-details p {
+            font-size: 0.8rem;
+            color: #64748b;
+            line-height: 1.4;
+        }
+
+        .award-date {
+            font-size: 0.72rem;
+            color: #94a3b8;
+            margin-top: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* Cert List (text-based) */
         .cert-list {
             display: flex;
             flex-direction: column;
@@ -594,6 +772,72 @@
         .cert-issuer {
             font-size: 0.8rem;
             color: #64748b;
+        }
+
+        /* Modal untuk zoom gambar sertifikat */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 1000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            max-width: 700px;
+            max-height: 80vh;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            max-height: 70vh;
+            object-fit: contain;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 0.8rem;
+            right: 0.8rem;
+            width: 36px;
+            height: 36px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            background: rgba(0,0,0,0.9);
+        }
+
+        .modal-caption {
+            padding: 0.8rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #0f172a;
+            background: #f8fafc;
         }
 
         /* Print Button */
@@ -643,15 +887,6 @@
             box-shadow: var(--shadow-md);
         }
 
-        /* QR Code placeholder */
-        .qr-placeholder {
-            text-align: center;
-            margin-top: 1rem;
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            opacity: 0.7;
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
             body {
@@ -668,8 +903,12 @@
                 font-size: 0.78rem;
                 padding: 0.5rem 0.8rem;
             }
-            .portfolio-grid {
+            .portfolio-grid,
+            .certificate-grid {
                 grid-template-columns: 1fr;
+            }
+            .certificate-image-wrapper {
+                height: 180px;
             }
         }
 
@@ -689,7 +928,7 @@
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
-            .action-bar, .tab-nav, .status-indicator {
+            .action-bar, .tab-nav, .status-indicator, .modal-overlay {
                 display: none !important;
             }
             .tab-pane {
@@ -698,6 +937,9 @@
             }
             .main-content {
                 padding: 1.5rem;
+            }
+            .certificate-image-wrapper img {
+                max-height: 120px;
             }
             @page {
                 margin: 0.5cm;
@@ -716,6 +958,7 @@
             <!-- Foto Profil -->
             <div class="photo-wrapper">
                 <div class="photo-container">
+                    <!-- GANTI NAMA FILE FOTO PROFIL ANDA DI SINI -->
                     <img src="foto-cv.jpg" alt="Foto Profil" id="profileImage" 
                          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="photo-fallback" id="photoFallback">
@@ -833,11 +1076,14 @@
                 <button class="tab-btn" data-tab="projects" role="tab" aria-selected="false">
                     <i class="fas fa-code"></i> Portfolio
                 </button>
+                <button class="tab-btn" data-tab="certificates" role="tab" aria-selected="false">
+                    <i class="fas fa-certificate"></i> Sertifikat
+                </button>
+                <button class="tab-btn" data-tab="awards" role="tab" aria-selected="false">
+                    <i class="fas fa-trophy"></i> Penghargaan
+                </button>
                 <button class="tab-btn" data-tab="education" role="tab" aria-selected="false">
                     <i class="fas fa-graduation-cap"></i> Pendidikan
-                </button>
-                <button class="tab-btn" data-tab="certificates" role="tab" aria-selected="false">
-                    <i class="fas fa-certificate"></i> Sertifikasi
                 </button>
             </nav>
 
@@ -983,6 +1229,189 @@
                 </div>
             </div>
 
+            <!-- ==================== TAB: SERTIFIKAT (DENGAN GAMBAR) ==================== -->
+            <div class="tab-pane" id="certificates" role="tabpanel">
+                <div class="content-section">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-certificate"></i></div>
+                        <h2 class="section-title">Sertifikat Profesional</h2>
+                    </div>
+                    <p style="color: #64748b; font-size: 0.85rem; margin-bottom: 1.2rem;">
+                        <i class="fas fa-info-circle"></i> Klik gambar sertifikat untuk memperbesar. 
+                        Ganti file gambar dengan sertifikat Anda sendiri.
+                    </p>
+                    
+                    <!-- GRID SERTIFIKAT DENGAN GAMBAR -->
+                    <div class="certificate-grid">
+                        <!-- Sertifikat 1: AWS -->
+                        <div class="certificate-card highlight" onclick="openModal('sertifikat-aws.jpg', 'AWS Solutions Architect Professional')">
+                            <span class="certificate-badge">Active</span>
+                            <div class="certificate-image-wrapper">
+                                <!-- GANTI NAMA FILE: sertifikat-aws.jpg -->
+                                <img src="sertifikat-aws.jpg" alt="AWS Certificate" 
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="certificate-fallback">
+                                    <i class="fab fa-aws"></i>
+                                    <span>sertifikat-aws.jpg</span>
+                                </div>
+                            </div>
+                            <div class="certificate-info">
+                                <div class="certificate-name">AWS Solutions Architect Professional</div>
+                                <div class="certificate-issuer"><i class="fab fa-aws"></i> Amazon Web Services</div>
+                                <div class="certificate-date"><i class="far fa-calendar-alt"></i> Diterbitkan: Jan 2024</div>
+                            </div>
+                        </div>
+
+                        <!-- Sertifikat 2: Google Cloud -->
+                        <div class="certificate-card" onclick="openModal('sertifikat-gcp.jpg', 'Google Professional Cloud Developer')">
+                            <span class="certificate-badge">Active</span>
+                            <div class="certificate-image-wrapper">
+                                <!-- GANTI NAMA FILE: sertifikat-gcp.jpg -->
+                                <img src="sertifikat-gcp.jpg" alt="Google Cloud Certificate" 
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="certificate-fallback">
+                                    <i class="fab fa-google"></i>
+                                    <span>sertifikat-gcp.jpg</span>
+                                </div>
+                            </div>
+                            <div class="certificate-info">
+                                <div class="certificate-name">Google Professional Cloud Developer</div>
+                                <div class="certificate-issuer"><i class="fab fa-google"></i> Google Cloud</div>
+                                <div class="certificate-date"><i class="far fa-calendar-alt"></i> Diterbitkan: Sep 2023</div>
+                            </div>
+                        </div>
+
+                        <!-- Sertifikat 3: Meta -->
+                        <div class="certificate-card" onclick="openModal('sertifikat-meta.jpg', 'Meta Front-End Developer Certificate')">
+                            <span class="certificate-badge">Active</span>
+                            <div class="certificate-image-wrapper">
+                                <!-- GANTI NAMA FILE: sertifikat-meta.jpg -->
+                                <img src="sertifikat-meta.jpg" alt="Meta Certificate" 
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="certificate-fallback">
+                                    <i class="fab fa-meta"></i>
+                                    <span>sertifikat-meta.jpg</span>
+                                </div>
+                            </div>
+                            <div class="certificate-info">
+                                <div class="certificate-name">Meta Front-End Developer Certificate</div>
+                                <div class="certificate-issuer"><i class="fas fa-building"></i> Meta (Coursera)</div>
+                                <div class="certificate-date"><i class="far fa-calendar-alt"></i> Diterbitkan: Jun 2023</div>
+                            </div>
+                        </div>
+
+                        <!-- Sertifikat 4: CKAD -->
+                        <div class="certificate-card" onclick="openModal('sertifikat-ckad.jpg', 'Kubernetes Application Developer (CKAD)')">
+                            <span class="certificate-badge">Active</span>
+                            <div class="certificate-image-wrapper">
+                                <!-- GANTI NAMA FILE: sertifikat-ckad.jpg -->
+                                <img src="sertifikat-ckad.jpg" alt="CKAD Certificate" 
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="certificate-fallback">
+                                    <i class="fas fa-dharmachakra"></i>
+                                    <span>sertifikat-ckad.jpg</span>
+                                </div>
+                            </div>
+                            <div class="certificate-info">
+                                <div class="certificate-name">Kubernetes Application Developer (CKAD)</div>
+                                <div class="certificate-issuer"><i class="fas fa-cloud"></i> CNCF</div>
+                                <div class="certificate-date"><i class="far fa-calendar-alt"></i> Diterbitkan: Mar 2023</div>
+                            </div>
+                        </div>
+
+                        <!-- Sertifikat 5: MongoDB -->
+                        <div class="certificate-card" onclick="openModal('sertifikat-mongodb.jpg', 'MongoDB Associate Developer')">
+                            <span class="certificate-badge">Active</span>
+                            <div class="certificate-image-wrapper">
+                                <!-- GANTI NAMA FILE: sertifikat-mongodb.jpg -->
+                                <img src="sertifikat-mongodb.jpg" alt="MongoDB Certificate" 
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="certificate-fallback">
+                                    <i class="fas fa-database"></i>
+                                    <span>sertifikat-mongodb.jpg</span>
+                                </div>
+                            </div>
+                            <div class="certificate-info">
+                                <div class="certificate-name">MongoDB Associate Developer</div>
+                                <div class="certificate-issuer"><i class="fas fa-leaf"></i> MongoDB University</div>
+                                <div class="certificate-date"><i class="far fa-calendar-alt"></i> Diterbitkan: Des 2022</div>
+                            </div>
+                        </div>
+
+                        <!-- Sertifikat 6: CompTIA -->
+                        <div class="certificate-card" onclick="openModal('sertifikat-comptia.jpg', 'CompTIA Security+')">
+                            <span class="certificate-badge">Active</span>
+                            <div class="certificate-image-wrapper">
+                                <!-- GANTI NAMA FILE: sertifikat-comptia.jpg -->
+                                <img src="sertifikat-comptia.jpg" alt="CompTIA Certificate" 
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="certificate-fallback">
+                                    <i class="fas fa-shield-haltered"></i>
+                                    <span>sertifikat-comptia.jpg</span>
+                                </div>
+                            </div>
+                            <div class="certificate-info">
+                                <div class="certificate-name">CompTIA Security+</div>
+                                <div class="certificate-issuer"><i class="fas fa-shield"></i> CompTIA</div>
+                                <div class="certificate-date"><i class="far fa-calendar-alt"></i> Diterbitkan: Agu 2022</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== TAB: PENGHARGAAN ==================== -->
+            <div class="tab-pane" id="awards" role="tabpanel">
+                <div class="content-section">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-trophy"></i></div>
+                        <h2 class="section-title">Penghargaan & Prestasi</h2>
+                    </div>
+                    
+                    <div class="award-list">
+                        <!-- Penghargaan 1 -->
+                        <div class="award-item">
+                            <div class="award-icon">🏆</div>
+                            <div class="award-details">
+                                <h4>Juara 1 Hackathon Nasional "Build for Indonesia"</h4>
+                                <p>Memenangkan kompetisi hackathon tingkat nasional dengan 500+ peserta. Mengembangkan solusi IoT untuk smart farming dalam 48 jam.</p>
+                                <div class="award-date"><i class="far fa-calendar-alt"></i> November 2023</div>
+                            </div>
+                        </div>
+
+                        <!-- Penghargaan 2 -->
+                        <div class="award-item">
+                            <div class="award-icon silver">🥈</div>
+                            <div class="award-details">
+                                <h4>Best Innovation Award - Tech Conference Asia</h4>
+                                <p>Penghargaan inovasi terbaik untuk pengembangan sistem pembayaran digital yang memproses 10.000 transaksi per detik.</p>
+                                <div class="award-date"><i class="far fa-calendar-alt"></i> Oktober 2022</div>
+                            </div>
+                        </div>
+
+                        <!-- Penghargaan 3 -->
+                        <div class="award-item">
+                            <div class="award-icon">⭐</div>
+                            <div class="award-details">
+                                <h4>Top Contributor Open Source Indonesia</h4>
+                                <p>Diakui sebagai salah satu kontributor open source teraktif di Indonesia dengan 500+ pull requests yang diterima di berbagai proyek.</p>
+                                <div class="award-date"><i class="far fa-calendar-alt"></i> Desember 2023</div>
+                            </div>
+                        </div>
+
+                        <!-- Penghargaan 4 -->
+                        <div class="award-item">
+                            <div class="award-icon bronze">🥉</div>
+                            <div class="award-details">
+                                <h4>Speaker Terbaik - Web Developer Summit</h4>
+                                <p>Terpilih sebagai speaker terbaik dari 50+ pembicara di konferensi pengembang web nasional.</p>
+                                <div class="award-date"><i class="far fa-calendar-alt"></i> Juli 2023</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Tab: Pendidikan -->
             <div class="tab-pane" id="education" role="tabpanel">
                 <div class="content-section">
@@ -1008,66 +1437,6 @@
 
                 <div class="content-section">
                     <div class="section-header">
-                        <div class="section-icon"><i class="fas fa-trophy"></i></div>
-                        <h2 class="section-title">Penghargaan & Prestasi</h2>
-                    </div>
-                    <ul class="achievement-list" style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 0.6rem;">🏆 Juara 1 Hackathon Nasional "Build for Indonesia" 2023</li>
-                        <li style="margin-bottom: 0.6rem;">🥇 Best Innovation Award - Tech Conference Asia 2022</li>
-                        <li style="margin-bottom: 0.6rem;">📝 Speaker di 5+ konferensi teknologi nasional</li>
-                        <li style="margin-bottom: 0.6rem;">⭐ Top Contributor Open Source Indonesia 2023</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Tab: Sertifikasi -->
-            <div class="tab-pane" id="certificates" role="tabpanel">
-                <div class="content-section">
-                    <div class="section-header">
-                        <div class="section-icon"><i class="fas fa-certificate"></i></div>
-                        <h2 class="section-title">Sertifikasi Profesional</h2>
-                    </div>
-                    <div class="cert-list">
-                        <div class="cert-item">
-                            <div>
-                                <div class="cert-name">AWS Solutions Architect Professional</div>
-                                <div class="cert-issuer">Amazon Web Services • 2024</div>
-                            </div>
-                            <span class="badge">Active</span>
-                        </div>
-                        <div class="cert-item">
-                            <div>
-                                <div class="cert-name">Google Professional Cloud Developer</div>
-                                <div class="cert-issuer">Google Cloud • 2023</div>
-                            </div>
-                            <span class="badge">Active</span>
-                        </div>
-                        <div class="cert-item">
-                            <div>
-                                <div class="cert-name">Meta Front-End Developer Certificate</div>
-                                <div class="cert-issuer">Meta (Coursera) • 2023</div>
-                            </div>
-                            <span class="badge">Active</span>
-                        </div>
-                        <div class="cert-item">
-                            <div>
-                                <div class="cert-name">Kubernetes Application Developer (CKAD)</div>
-                                <div class="cert-issuer">CNCF • 2022</div>
-                            </div>
-                            <span class="badge">Active</span>
-                        </div>
-                        <div class="cert-item">
-                            <div>
-                                <div class="cert-name">MongoDB Associate Developer</div>
-                                <div class="cert-issuer">MongoDB University • 2022</div>
-                            </div>
-                            <span class="badge">Active</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="content-section">
-                    <div class="section-header">
                         <div class="section-icon"><i class="fas fa-book-open"></i></div>
                         <h2 class="section-title">Kursus & Pelatihan</h2>
                     </div>
@@ -1077,18 +1446,21 @@
                                 <div class="cert-name">System Design for Senior Engineers</div>
                                 <div class="cert-issuer">ByteByteGo • 2024</div>
                             </div>
+                            <span class="badge">Completed</span>
                         </div>
                         <div class="cert-item">
                             <div>
                                 <div class="cert-name">Advanced TypeScript Patterns</div>
                                 <div class="cert-issuer">Frontend Masters • 2023</div>
                             </div>
+                            <span class="badge">Completed</span>
                         </div>
                         <div class="cert-item">
                             <div>
                                 <div class="cert-name">gRPC & Microservices Communication</div>
                                 <div class="cert-issuer">Udemy • 2023</div>
                             </div>
+                            <span class="badge">Completed</span>
                         </div>
                     </div>
                 </div>
@@ -1106,6 +1478,17 @@
         </main>
     </div>
 
+    <!-- ==================== MODAL UNTUK ZOOM GAMBAR SERTIFIKAT ==================== -->
+    <div class="modal-overlay" id="imageModal" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <img src="" alt="Sertifikat" id="modalImage">
+            <div class="modal-caption" id="modalCaption"></div>
+        </div>
+    </div>
+
     <script>
         (function() {
             // ============ TAB NAVIGATION ============
@@ -1113,14 +1496,12 @@
             const tabPanes = document.querySelectorAll('.tab-pane');
 
             function switchTab(targetId) {
-                // Deactivate all
                 tabButtons.forEach(btn => {
                     btn.classList.remove('active');
                     btn.setAttribute('aria-selected', 'false');
                 });
                 tabPanes.forEach(pane => pane.classList.remove('active'));
 
-                // Activate target
                 const activeBtn = document.querySelector(`[data-tab="${targetId}"]`);
                 const activePane = document.getElementById(targetId);
                 
@@ -1137,8 +1518,6 @@
                 btn.addEventListener('click', function() {
                     const tabId = this.getAttribute('data-tab');
                     switchTab(tabId);
-                    
-                    // Update URL hash (optional)
                     history.pushState(null, null, `#${tabId}`);
                 });
             });
@@ -1159,9 +1538,7 @@
                 skillFills.forEach((fill, index) => {
                     const targetWidth = fill.getAttribute('data-width');
                     if (targetWidth) {
-                        // Reset
                         fill.style.width = '0%';
-                        // Animate with stagger
                         setTimeout(() => {
                             fill.style.width = targetWidth + '%';
                         }, 100 + (index * 80));
@@ -1169,10 +1546,9 @@
                 });
             }
 
-            // Animate on load and on tab switch (re-trigger)
             animateSkillBars();
             
-            // Re-animate when switching tabs (in case skill bars are in different tabs)
+            // Re-animate on tab switch
             const observer = new MutationObserver((mutations) => {
                 mutations.forEach(mutation => {
                     if (mutation.target.classList.contains('active')) {
@@ -1185,31 +1561,61 @@
                 observer.observe(pane, { attributes: true, attributeFilter: ['class'] });
             });
 
-            // ============ DOWNLOAD PDF (Print to PDF) ============
+            // ============ MODAL UNTUK ZOOM SERTIFIKAT ============
+            window.openModal = function(imageSrc, caption) {
+                const modal = document.getElementById('imageModal');
+                const modalImg = document.getElementById('modalImage');
+                const modalCaption = document.getElementById('modalCaption');
+                
+                modalImg.src = imageSrc;
+                modalCaption.textContent = caption;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            };
+
+            window.closeModal = function() {
+                const modal = document.getElementById('imageModal');
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            };
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            });
+
+            // ============ DOWNLOAD PDF ============
             document.getElementById('downloadPDF').addEventListener('click', function() {
                 alert('💡 Klik "Cetak CV" lalu pilih "Save as PDF" di dialog print untuk menyimpan sebagai PDF.\n\nAtau gunakan Ctrl+P / Cmd+P.');
                 window.print();
             });
 
             // ============ PROFILE IMAGE ERROR HANDLING ============
-            // Already handled via inline onerror, but we add a console log
             const profileImg = document.getElementById('profileImage');
             if (profileImg) {
                 profileImg.addEventListener('error', function() {
                     console.log('⚠️ Gambar "foto-cv.jpg" tidak ditemukan. Menampilkan fallback icon.');
                 });
                 
-                // Check if image loaded successfully
                 if (profileImg.complete && profileImg.naturalHeight === 0) {
                     profileImg.style.display = 'none';
                     document.getElementById('photoFallback').style.display = 'flex';
                 }
             }
 
-            console.log('✅ CV Full Stack Developer siap digunakan!');
-            console.log('📝 Ganti data placeholder dengan informasi Anda.');
-            console.log('🖼️ Pastikan file "foto-cv.jpg" ada di folder yang sama dengan file HTML ini.');
-            console.log('📑 Gunakan tab navigasi untuk melihat semua section.');
+            console.log('✅ CV Full Stack Developer dengan Sertifikat Gambar siap digunakan!');
+            console.log('📝 Daftar file gambar default yang perlu disiapkan:');
+            console.log('   1. foto-cv.jpg - Foto profil Anda');
+            console.log('   2. sertifikat-aws.jpg - Sertifikat AWS');
+            console.log('   3. sertifikat-gcp.jpg - Sertifikat Google Cloud');
+            console.log('   4. sertifikat-meta.jpg - Sertifikat Meta');
+            console.log('   5. sertifikat-ckad.jpg - Sertifikat CKAD');
+            console.log('   6. sertifikat-mongodb.jpg - Sertifikat MongoDB');
+            console.log('   7. sertifikat-comptia.jpg - Sertifikat CompTIA');
+            console.log('🖼️ Semua file gambar disimpan di folder yang sama dengan file HTML ini.');
+            console.log('🖱️ Klik gambar sertifikat untuk memperbesar (fitur zoom modal).');
         })();
     </script>
 </body>
